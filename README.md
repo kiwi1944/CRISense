@@ -1,4 +1,4 @@
-# Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations (ICLR-DT-RAM)
+# Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations (CRISense)
 
 This is a PyTorch implementation of the paper "**Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations**" in **IEEE Transactions on Communications**.
 Arxiv link: 
@@ -8,8 +8,6 @@ Specifically, the RIS phases are customized according to the scene, task, quanti
 
 
 # Package Versions for the Authors' Experimants
-
-The codes employs **wandb** for training process visualization and data recording.
 
 - python==3.11.5
 - pytorch==2.0.1
@@ -57,5 +55,5 @@ python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2
 
 This work is motivated by [Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247) and [Dynamic Computational Time for Recurrent Attention Model](https://arxiv.org/abs/1703.10332) in the computer vision filed.
 
-The codes for ICLR-DT-RAM are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM), which are public in GitHub.
+The codes for CRISense are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM), which are public in GitHub.
 
