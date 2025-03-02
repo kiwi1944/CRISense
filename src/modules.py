@@ -4,7 +4,8 @@ import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 import math
 
-class physical_model(object): # defines how the image projects to the CSI measurements
+
+class PhysicalModel(object): # defines how the image projects to the CSI measurements
 
     def __init__(self, used_channel, transmit_scale):
         self.used_channel = used_channel
@@ -41,12 +42,12 @@ class physical_model(object): # defines how the image projects to the CSI measur
         return mea
 
 
-class measure_embedding_network(nn.Module): # `g_t = relu( fc( fc(measurements) ) + fc( fc(RIS_phase_power) ) )`
+class MeasureEmbeddingNetwork(nn.Module): # `g_t = relu( fc( fc(measurements) ) + fc( fc(RIS_phase_power) ) )`
 
     def __init__(self, measure_embedding_hidden_size, RIS_phase_power_embedding_hidden_size, learned_start, 
                  used_channel, transmit_scale):
-        super(measure_embedding_network, self).__init__()
-        self.physical = physical_model(used_channel, transmit_scale)
+        super(MeasureEmbeddingNetwork, self).__init__()
+        self.physical = PhysicalModel(used_channel, transmit_scale)
         self.learned_start = learned_start
         if learned_start:
             first_RIS_phase_power = torch.rand(1, used_channel[0].shape[1]) * 2 * math.pi
@@ -84,10 +85,10 @@ class measure_embedding_network(nn.Module): # `g_t = relu( fc( fc(measurements) 
         return measure_embedding
     
 
-class classify_network(nn.Module): # Uses the internal state `h_t` of the core network to produce the final output classification.
+class ClassifyNetwork(nn.Module): # Uses the internal state `h_t` of the core network to produce the final output classification.
 
     def __init__(self, input_size, hidden_size, output_size):
-        super(classify_network, self).__init__()
+        super(ClassifyNetwork, self).__init__()
         self.model = nn.Sequential(
             nn.Linear(input_size, hidden_size),
             nn.BatchNorm1d(hidden_size, track_running_stats=False),
@@ -102,10 +103,10 @@ class classify_network(nn.Module): # Uses the internal state `h_t` of the core n
         return classifier_log_prob
 
 
-class RIS_phase_optimization_network(nn.Module):
+class RISPhaseCustomizationNetwork(nn.Module):
 
     def __init__(self, input_size, hidden_size, output_size):
-        super(RIS_phase_optimization_network, self).__init__()
+        super(RISPhaseCustomizationNetwork, self).__init__()
         self.model = nn.Sequential(
             nn.Linear(input_size, hidden_size),
             nn.BatchNorm1d(1, track_running_stats=False),

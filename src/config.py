@@ -1,5 +1,6 @@
 import argparse
 
+
 arg_lists = []
 parser = argparse.ArgumentParser(description='RAM')
 
@@ -10,6 +11,7 @@ def add_argument_group(name):
     arg = parser.add_argument_group(name)
     arg_lists.append(arg)
     return arg
+
 
 # following parameters are used for dataset loading
 system_arg = add_argument_group('imaging system Params')
@@ -31,7 +33,7 @@ net_arg.add_argument('--num_glimpses', type=int, default=5, help='# certain numb
 net_arg.add_argument('--rnn_hidden_size', type=int, default=256, help='hidden size of rnn/lstm')
 net_arg.add_argument('--measure_embedding_hidden_size', type=str, default='256,256', help='NN hidden size')
 net_arg.add_argument('--RIS_phase_power_embedding_hidden_size', type=str, default='256,256', help='')
-net_arg.add_argument('--RIS_phase_optimization_hidden_size', type=str, default='256', help='')
+net_arg.add_argument('--RIS_phase_customization_hidden_size', type=str, default='256', help='')
 net_arg.add_argument('--classify_hidden_size', type=str, default='256', help='')
 
 
@@ -59,7 +61,7 @@ train_arg.add_argument('--ckpt_save_interval', type=int, default=5, help='save c
 
 # other params
 misc_arg = add_argument_group('Misc.')
-misc_arg.add_argument('--test_wandb_data', type=str, default='./wandb_csv/wandb_export_2024-03-08T17_01_52.094+08_00.csv', help='Load the wandb csv for prediction')
+misc_arg.add_argument('--test_wandb_data', type=str, default='./wandb_csv/wandb_export_2025-03-01T12_00_00.000+08_00.csv', help='Load the wandb csv for prediction')
 misc_arg.add_argument('--test_index', type=int, default=7, help='test which data in the wandb csv')
 misc_arg.add_argument('--random_seed', type=int, default=2, help='Seed to ensure reproducibility')
 misc_arg.add_argument('--ckpt_dir', type=str, default='./ckpt/', help='Directory in which to save model checkpoints')

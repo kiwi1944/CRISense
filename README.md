@@ -39,7 +39,7 @@ An example for testing is:
 python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2025-03-01T12_00_00.000+08_00.csv'
 ```
 
-# Citation Information
+# Citation
 
 ```
 @article{huang2025integrated,

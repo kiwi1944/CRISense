@@ -2,6 +2,7 @@ import math
 import torch
 import logging
 
+
 def channel_generation(config):
 
     logging.info(f'generating used channels')

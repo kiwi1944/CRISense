@@ -1,10 +1,12 @@
-# This is the code used for paper "Integrated Communication and Learned Recognizer with 
-# Customized RIS Phases and Sensing Durations" in IEEE Transactions on Communications
+"""
+This is the code used for paper 
+"Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations" 
+in IEEE Transactions on Communications
 
-# author: Huang Yixuan, email: huangyx@seu.edu.cn
+author: Huang Yixuan, email: huangyx@seu.edu.cn
 
-# Public date: 2025-03-01
-
+Public date: 2025-03-01
+"""
 
 import os
 import torch
@@ -22,8 +24,10 @@ def main(config):
 
     if config.is_train:
         used_channel = channel_generation(config) # generate point-to-point channels
-        data_loader = get_train_valid_loader(batch_size=config.batch_size, valid_size=config.valid_size, train_data_scale=config.train_data_scale,
-                                             shuffle=config.shuffle, num_workers=config.num_workers, ROI_num3=config.ROI_num3, data_name=config.data_name)
+        data_loader = get_train_valid_loader(batch_size=config.batch_size, valid_size=config.valid_size, 
+                                             train_data_scale=config.train_data_scale, shuffle=config.shuffle, 
+                                             num_workers=config.num_workers, ROI_num3=config.ROI_num3, 
+                                             data_name=config.data_name)
         trainer = Trainer(config, data_loader, used_channel)
         save_config(config)
         trainer.train()
@@ -33,7 +37,8 @@ def main(config):
         index = config.test_index - 1
         config = renew_test_config_from_csv(config, wandb_data_csv, index)
         used_channel = channel_generation(config)
-        data_loader = get_test_loader(batch_size=config.batch_size, num_workers=config.num_workers, ROI_num3=config.ROI_num3, data_name=config.data_name)
+        data_loader = get_test_loader(batch_size=config.batch_size, num_workers=config.num_workers, 
+                                      ROI_num3=config.ROI_num3, data_name=config.data_name)
         trainer = Trainer(config, data_loader, used_channel)
         trainer.test()
 

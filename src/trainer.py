@@ -1,6 +1,4 @@
-
 import os
-import time
 import torch
 import wandb
 import logging
@@ -11,7 +9,6 @@ from model import RecurrentAttention
 import torch.optim as optim
 import torch.nn.functional as F
 import pandas as pd
-import socket
 
 
 class Trainer(object):
@@ -24,7 +21,7 @@ class Trainer(object):
         self.rnn_hidden_size = config.rnn_hidden_size
         self.measure_embedding_hidden_size = list(map(lambda x: int(x), config.measure_embedding_hidden_size.split(',')))
         self.RIS_phase_power_embedding_hidden_size = list(map(lambda x: int(x), config.RIS_phase_power_embedding_hidden_size.split(',')))
-        self.RIS_phase_optimization_hidden_size = list(map(lambda x: int(x), config.RIS_phase_optimization_hidden_size.split(',')))
+        self.RIS_phase_customization_hidden_size = list(map(lambda x: int(x), config.RIS_phase_customization_hidden_size.split(',')))
         self.classify_hidden_size = list(map(lambda x: int(x), config.classify_hidden_size.split(',')))
 
         # verify network dims, which should match the present codes
@@ -32,8 +29,8 @@ class Trainer(object):
             'network dims error! present codes only support len(measure_embedding_hidden_size) == 2'
         assert len(self.RIS_phase_power_embedding_hidden_size) == 2, \
             'network dims error! present codes only support len(RIS_phase_power_embedding_hidden_size) == 2'
-        assert len(self.RIS_phase_optimization_hidden_size) == 1, \
-            'network dims error! present codes only support len(RIS_phase_optimization_hidden_size) == 1'
+        assert len(self.RIS_phase_customization_hidden_size) == 1, \
+            'network dims error! present codes only support len(RIS_phase_customization_hidden_size) == 1'
         assert len(self.classify_hidden_size) == 1, \
             'network dims error! present codes only support len(classify_hidden_size) == 1'
         assert self.measure_embedding_hidden_size[-1] == self.RIS_phase_power_embedding_hidden_size[-1], \
@@ -72,8 +69,9 @@ class Trainer(object):
             self.RIS_phase_power_initial = para_dict['model_state']['measure_embedding.first_RIS_phase_power']
             self.RIS_phase_power_initial = self.RIS_phase_power_initial.to(device=self.device)
 
-        self.model = RecurrentAttention(self.measure_embedding_hidden_size, self.RIS_phase_power_embedding_hidden_size, self.RIS_phase_optimization_hidden_size, 
-                                        self.classify_hidden_size, self.used_channel, self.rnn_hidden_size, self.num_classes, 
+        self.model = RecurrentAttention(self.measure_embedding_hidden_size, self.RIS_phase_power_embedding_hidden_size, 
+                                        self.RIS_phase_customization_hidden_size, self.classify_hidden_size, 
+                                        self.used_channel, self.rnn_hidden_size, self.num_classes, 
                                         self.config.learned_start, self.transmit_scale)
         self.model = self.model.to(device=self.device)
         for i in range(len(self.model.measure_embedding.physical.used_channel)):
