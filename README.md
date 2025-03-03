@@ -1,10 +1,10 @@
 # Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations (CRISense)
 
-This is a PyTorch implementation of the paper "**Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations**" in **IEEE Transactions on Communications**.
+This is a PyTorch implementation of the paper "**Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations**" in *IEEE Transactions on Communications*.
 Arxiv link: 
 
-This paper realizes high-accuracy and fast **target recognition in RIS-aided ISAC systems using wireless signal**.
-Specifically, the RIS phases are customized according to the scene, task, quantization, and target priors, and the sensing duration is adaptively determined based on the previously acquired information.
+This paper realizes high-accuracy and fast **target recognition in RIS-aided ISAC systems using wireless signals**.
+Specifically, the RIS phases are customized according to the scene, task, quantization, and target priors, and the sensing duration is dynamically determined based on the previously captured information.
 
 
 # Package Versions for the Authors' Experimants
@@ -55,5 +55,5 @@ python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2
 
 This work is motivated by [Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247) and [Dynamic Computational Time for Recurrent Attention Model](https://arxiv.org/abs/1703.10332) in the computer vision filed.
 
-The codes for CRISense are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM), which are public in GitHub.
+The codes for CRISense are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM).
 
