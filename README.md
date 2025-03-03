@@ -21,7 +21,7 @@ The training scripts come with several options.
 An example for training is:
 
 ```
-python main.py --data_name 'mnist' --RIS_num2 '20,20' --distance 50 --num_glimpses 5 --learned_start True --wandb_project 'ICLR-DT-RAM'
+python main.py --data_name 'mnist' --RIS_num2 '20,20' --distance 50 --num_glimpses 5 --learned_start True --wandb_project 'CRISense'
 ```
 
 # Testing
