@@ -7,7 +7,7 @@ This paper realizes high-accuracy and fast **target recognition in RIS-aided ISA
 Specifically, the RIS phases are customized according to the scene, task, quantization, and target priors, and the sensing duration is dynamically determined based on the previously captured information.
 
 
-# Package Versions for the Authors' Experimants
+# Packages
 
 - python==3.11.5
 - pytorch==2.0.1
@@ -21,7 +21,7 @@ The training scripts come with several options.
 An example for training is:
 
 ```
-python main.py --data_name 'mnist' --RIS_num2 '20,20' --distance 50 --num_glimpses 5 --learned_start True --wandb_project 'CRISense'
+python main.py --is_train True --num_glimpses 5 --learned_start True --wandb_project 'CRISense'  
 ```
 
 # Testing
@@ -30,20 +30,20 @@ The codes rely on the .csv files exported from wandb to conduct tests.
 An example file name is:
 
 ```
-wandb_export_2025-03-01T12_00_00.000+08_00.csv
+wandb_export_2025-03-01T12_00_00.000+08_00.csv  
 ```
 
 An example for testing is:
 
 ```
-python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2025-03-01T12_00_00.000+08_00.csv'
+python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2025-03-01T12_00_00.000+08_00.csv'  
 ```
 
 # Citation
 
 ```
 @article{huang2025integrated,
-  title={Integrated Communication and Learned Recognizer with Customized {RIS} Phases and Sensing Durations},
+  title={Integrated Communication and Learned Recognizer with Customized {RIS} Phases and Sensing Durations},  
   author={Huang, Yixuan and Yang, Jie and Wen, Chao-Kai and Jin, Shi},
   journal={IEEE Transactions on Communications},
   year={early access, Mar. 2025},
