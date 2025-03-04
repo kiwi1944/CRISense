@@ -55,5 +55,5 @@ python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2
 
 This work is motivated by [Recurrent Models of Visual Attention](https://arxiv.org/abs/1406.6247) and [Dynamic Computational Time for Recurrent Attention Model](https://arxiv.org/abs/1703.10332) in the computer vision filed.
 
-The codes for CRISense are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM).
+The codes for CRISense are built on [recurrent-visual-attention](https://github.com/kevinzakka/recurrent-visual-attention) and [DT-RAM](https://github.com/baidu-research/DT-RAM) using wireless communication and sensing knowledge.
 
