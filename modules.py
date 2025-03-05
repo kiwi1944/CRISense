@@ -19,6 +19,7 @@ class PhysicalModel(object): # defines how the image projects to the CSI measure
         # vol. 22, no. 12, pp. 8797–8813, Dec. 2023.
 
     def illuminate(self, x, RIS_phase_power):
+        # this function is anticapted to be optimized in furture to accelerate running
 
         if len(RIS_phase_power.shape) == 2: RIS_phase_power = RIS_phase_power.unsqueeze(dim=1)
         com = torch.complex(torch.tensor(0, dtype=torch.float32), torch.tensor(1, dtype=torch.float32))
