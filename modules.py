@@ -26,14 +26,12 @@ class PhysicalModel(object): # defines how the image projects to the CSI measure
         mea = torch.zeros(x.shape[0], 1, 2 * self.used_channel[0].shape[0] * self.used_channel[2].shape[1])
         for i in range(x.shape[0]):
             RIS_phase = torch.exp( - 1 * com * RIS_phase_power[i, :])
-            h_tx_ris_rx = torch.mm(self.used_channel[0] * RIS_phase.repeat(self.used_channel[0].shape[0], 1) * self.RIS_RCS, self.used_channel[2])
-            h_tx_roi_rx = torch.mm(self.used_channel[1] * x[i].repeat(self.used_channel[1].shape[0], 1) * self.voxel_RCS, self.used_channel[3])
-            h_tx_ris_roi_rx = torch.mm(torch.mm(self.used_channel[0] * RIS_phase.repeat(self.used_channel[0].shape[0], 1) * self.RIS_RCS, 
-                                                self.used_channel[4].t()) * x[i].repeat(self.used_channel[0].shape[0], 1) * self.voxel_RCS, 
-                                                self.used_channel[3])
-            h_tx_roi_ris_rx = torch.mm(torch.mm(self.used_channel[1] * x[i].repeat(self.used_channel[1].shape[0], 1) * self.voxel_RCS, 
-                                                self.used_channel[4]) * RIS_phase.repeat(self.used_channel[1].shape[0], 1) * self.RIS_RCS, 
-                                                self.used_channel[2])
+            h_tx_ris_rx = torch.mm(self.used_channel[0] * RIS_phase_power * self.RIS_RCS, self.used_channel[2])
+            h_tx_roi_rx = torch.mm(self.used_channel[1] * x[i] * self.voxel_RCS, self.used_channel[3])
+            h_tx_ris_roi_rx = torch.mm(torch.mm(self.used_channel[0] * RIS_phase * self.RIS_RCS, self.used_channel[4].t())
+                                       * x[i] * self.voxel_RCS, self.used_channel[3])
+            h_tx_roi_ris_rx = torch.mm(torch.mm(self.used_channel[1] * x[i] * self.voxel_RCS, self.used_channel[4])
+                                       * RIS_phase * self.RIS_RCS, self.used_channel[2])
             mea_in = h_tx_ris_rx + h_tx_roi_rx + h_tx_ris_roi_rx + h_tx_roi_ris_rx + self.used_channel[5]
             mea_in = mea_in.view(1, -1)
             mea_vec = torch.cat((mea_in.real, mea_in.imag), 1) * self.transmit_scale # complex measurements to real vectors
