@@ -49,6 +49,14 @@ python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2
   year={early access, Mar. 2025},
   publisher={IEEE}
 }
+
+@inproceedings{huang2024learned,
+  title={Learned intelligent recognizer with adaptively customized RIS phases in communication systems},
+  author={Huang, Yixuan and Yang, Jie and Wen, Chao-Kai and Xia, Shuqiang and Li, Xiao and Jin, Shi},
+  booktitle={2024 International Conference on Future Communications and Networks (FCN)},
+  pages={1--6},
+  year={Nov. 2024}
+}
 ```
 
 # References
