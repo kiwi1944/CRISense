@@ -1,6 +1,7 @@
 # Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations (CRISense)
 
 This is a PyTorch implementation of the paper "**Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations**" in *IEEE Transactions on Communications*.
+Its conference version has been presented in FCN 2024 and got the Best Student Paper Award, Valletta, Malta, Nov. 2024.
 Arxiv link: https://arxiv.org/abs/2503.02244
 
 This paper realizes high-accuracy and fast **target recognition in RIS-aided ISAC systems using wireless signals**.
