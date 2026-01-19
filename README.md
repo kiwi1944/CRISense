@@ -1,7 +1,7 @@
 # Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations (CRISense)
 
 This is a PyTorch implementation of the paper "**Integrated Communication and Learned Recognizer with Customized RIS Phases and Sensing Durations**" in *IEEE Transactions on Communications*.
-Its conference version has been presented in FCN 2024 and got the Best Student Paper Award, Valletta, Malta, Nov. 2024.
+Its conference version has been presented in FCN 2024 and received the Best Student Paper Award, Valletta, Malta, Nov. 2024.
 Arxiv link: https://arxiv.org/abs/2503.02244
 
 This paper realizes high-accuracy and fast **target recognition in RIS-aided ISAC systems using wireless signals**.
@@ -46,15 +46,18 @@ python main.py --is_train False --test_index 1 --test_wandb_data 'wandb_export_2
 @article{huang2025integrated,
   title={Integrated Communication and Learned Recognizer with Customized {RIS} Phases and Sensing Durations},  
   author={Huang, Yixuan and Yang, Jie and Wen, Chao-Kai and Jin, Shi},
-  journal={IEEE Transactions on Communications},
-  year={early access, Mar. 2025},
+  journal={IEEE Trans. Commun.},
+  volume={73},
+  number={9},
+  pages={7332--7348},
+  year={Sep. 2025},
   publisher={IEEE}
 }
 
 @inproceedings{huang2024learned,
   title={Learned intelligent recognizer with adaptively customized RIS phases in communication systems},
   author={Huang, Yixuan and Yang, Jie and Wen, Chao-Kai and Xia, Shuqiang and Li, Xiao and Jin, Shi},
-  booktitle={2024 International Conference on Future Communications and Networks (FCN)},
+  booktitle={Proc. Int. Conf. Future Commun. Netw. (FCN)},
   pages={1--6},
   year={Nov. 2024}
 }
